@@ -1,0 +1,33 @@
+import 'package:flutter/material.dart';
+
+class SlidingText extends StatelessWidget {
+  const SlidingText({
+    super.key,
+    required this.animationController,
+    required this.slidingAnimation,
+  });
+
+  final AnimationController animationController;
+  final Animation<Offset> slidingAnimation;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: animationController,
+      builder: (context, _) {
+        return SlideTransition(
+          position: slidingAnimation,
+          child: Center(
+            child: Text(
+              'Open Free Book',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Theme.of(context).colorScheme.primary,
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
